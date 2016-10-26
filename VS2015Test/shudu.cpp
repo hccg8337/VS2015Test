@@ -1,4 +1,5 @@
-#include "stdio.h"
+#include <stdio.h>
+#include <Windows.h>
 
 int InBlock[81], InRow[81], InCol[81];
 
@@ -66,6 +67,38 @@ void PrintArray()
 		}
 		putc('\n', stdout);
 	}
+}
+
+void InputFromFile()
+{
+	char FilePath[] = "shudu.txt";
+	char line[12];
+	//printf("Input FilePath£º");
+	//scanf("%s", FilePath);
+	FILE* fp;
+	fp = fopen(FilePath, "r");
+	if (fp == NULL)
+	{
+		printf("The file does not exist!");
+		return;
+	}
+
+	int l = 0;
+	while (!feof(fp))
+	{
+		fgets(line, 12, fp);
+		for (int i = 0 ; i < 9 ; i++)
+		{
+			char ch = line[i];
+			if (ch >= '1' && ch <= '9')
+			{
+				InitEntry(l, i, ch - '0');
+			}
+		}
+		l++;
+	}
+	fclose(fp);
+	PrintArray();
 }
 
 void ConsoleInput()
@@ -200,9 +233,10 @@ int main(int argc, char* argv[])
 	for (i = 0; i < 9; i++)
 		Block[i] = Row[i] = Col[i] = ONES;
 
-	ConsoleInput();
+	//ConsoleInput();
+	InputFromFile();
 	Place(SeqPtr);
 	printf("\n\nTotal Count = %d\n", Count);
-
+	system("pause");
 	return 0;
 }
