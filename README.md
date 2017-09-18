@@ -15,7 +15,6 @@ print(result[1][1].decode('gbk'))
 c.close()
 ```
 2. **详细接口**
-
 | 接口 |          接口参数           |  说明  |
 |--|-----------------------|--|
 |  exposed_del_console  | None |   删除console日志   |
