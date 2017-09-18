@@ -15,7 +15,7 @@ print(result[1][1].decode('gbk'))
 c.close()
 ```
 2. **详细接口**
-  | 接口 |          接口参数           |  说明  |
+-| 接口 |          接口参数           |  说明  |
 |--|-----------------------|--|
 |  exposed_del_console  | None |   删除console日志   |
 |  exposed_console  |      tell: 读取位置(str/int)      |   获取日志   |
